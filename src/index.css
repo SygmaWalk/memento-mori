@@ -1,0 +1,24 @@
+@import "tailwindcss";
+@variant dark (&:where(.dark, .dark *));
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100vh;
+  transition: background-color 500ms ease, color 500ms ease;
+}
+
+html.dark, html.dark body {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+html:not(.dark), html:not(.dark) body {
+  background-color: #ffffff;
+  color: #000000;
+}
