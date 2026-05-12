@@ -1,26 +1,43 @@
+import { useNavigate } from "react-router-dom";
+import SkullCanvas from "./SkullCanvas";
+
 function Hero() {
+  const navigate = useNavigate();
+
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center text-center px-6">
-      
-      <p className="text-xs tracking-[0.5em] uppercase mb-6 opacity-50">
-        Tempus fugit
-      </p>
+    <section className="relative min-h-screen overflow-hidden flex flex-col items-center justify-center text-center px-6 gap-8 bg-white dark:bg-black text-black dark:text-white">
 
-      <h1 className="text-6xl md:text-8xl font-bold tracking-tight mb-6">
-        Memento Mori
-      </h1>
+      {/* Fondo 3D */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <SkullCanvas />
+      </div>
 
-      <p className="text-base md:text-lg max-w-xl opacity-70 leading-relaxed mb-10">
-        Tu vida tiene aproximadamente <strong>4.000 semanas</strong>. 
-        Esta aplicación te ayuda a visualizarlas, una por una.
-      </p>
+      {/* Contenido */}
+      <div className="relative z-10 flex flex-col items-center gap-8">
 
-      <button className="border border-black dark:border-white px-8 py-3 text-sm tracking-widest uppercase hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors duration-200">
-        Ver mi calendario
-      </button>
+        <p className="text-xs tracking-[0.5em] uppercase opacity-40">
+          Tempus fugit
+        </p>
 
+        <h1 className="text-7xl md:text-9xl font-bold leading-none tracking-tight">
+          Memento<br />Mori
+        </h1>
+
+        <p className="text-sm md:text-base max-w-md opacity-60 leading-relaxed font-light">
+          Tu vida tiene aproximadamente 4.000 semanas.
+          Esta aplicación te ayuda a visualizarlas, una por una.
+        </p>
+
+        <button
+          onClick={() => navigate("/app")}
+          className="border border-black dark:border-white px-8 py-3 text-xs tracking-[0.3em] uppercase hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors duration-300"
+        >
+          Ver mi calendario
+        </button>
+
+      </div>
     </section>
-  )
+  );
 }
 
-export default Hero
+export default Hero;

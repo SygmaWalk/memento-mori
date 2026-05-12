@@ -1,15 +1,19 @@
-import { useTheme } from './context/ThemeContext'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Navbar from './components/layout/Navbar'
 import LandingPage from './pages/LandingPage'
+import AppPage from './pages/AppPage'
 
 function App() {
-  const { isDark, toggleTheme } = useTheme()
-
   return (
-    <div className="min-h-screen w-full bg-white dark:bg-black text-black dark:text-white transition-colors duration-500">
-      <Navbar />
-      <LandingPage />
-    </div>
+    <BrowserRouter>
+      <div className="min-h-screen w-full bg-white dark:bg-black text-black dark:text-white transition-colors duration-500">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/app" element={<AppPage />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   )
 }
 
